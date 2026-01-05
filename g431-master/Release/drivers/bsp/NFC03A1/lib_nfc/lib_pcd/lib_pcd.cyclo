@@ -1,0 +1,17 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:123:8:PCD_SendEOF	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:164:8:PCD_Echo	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:272:8:PCD_Idle	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:331:8:PCD_WriteRegister	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:355:8:PCD_PORsequence	9
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:183:8:PCD_ProtocolSelect	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:138:6:PCD_FieldOff	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:151:6:PCD_FieldOn	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:417:8:PCD_IsCRCOk	5
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:477:8:PCD_IsReaderResultCodeOk	13
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:231:8:PCD_SendRecv	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:301:8:PCD_ReadRegister	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:399:8:PCD_CheckSendReceive	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:607:8:PCD_TagDetectCalibration	14
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:692:8:PCD_WaitforTagDetection	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:730:8:PCD_BaudRate	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:751:8:PCD_ChangeUARTBaudRate	3

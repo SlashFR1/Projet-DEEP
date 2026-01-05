@@ -1,0 +1,13 @@
+../drivers/bsp/Fingerprint/fingerprint.c:39:6:fingerprint_process_ms	0	static
+../drivers/bsp/Fingerprint/fingerprint.c:93:6:fingerprint_init	8	static
+../drivers/bsp/Fingerprint/fingerprint.c:483:6:parse_frames	8	static
+../drivers/bsp/Fingerprint/fingerprint.c:601:6:send_command	312	static
+../drivers/bsp/Fingerprint/fingerprint.c:407:6:send_setPwd	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:422:6:send_genImg	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:433:6:send_Img2Tz	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:443:6:send_store	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:455:6:send_command_withoutparameters	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:465:6:send_search	272	static
+../drivers/bsp/Fingerprint/fingerprint.c:110:6:search_fingerprint_state_machine	24	static
+../drivers/bsp/Fingerprint/fingerprint.c:244:6:add_fingerprint_state_machine	32	static
+../drivers/bsp/Fingerprint/fingerprint.c:46:6:fingerprint_process_main	8	static

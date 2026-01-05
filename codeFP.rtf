@@ -1,0 +1,1314 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red217\green232\blue247;\red221\green40\blue103;\red141\green218\blue248;
+\red230\green230\blue250;\red167\green236\blue33;\red249\green250\blue244;\red104\green151\blue187;\red23\green198\blue163;
+\red255\green191\blue38;\red98\green98\blue98;\red13\green209\blue64;\red18\green144\blue195;\red121\green171\blue255;
+\red237\green127\blue72;\red102\green225\blue248;\red150\green236\blue63;}
+{\*\expandedcolortbl;;\csgenericrgb\c85098\c90980\c96863;\csgenericrgb\c86667\c15686\c40392;\csgenericrgb\c55294\c85490\c97255;
+\csgenericrgb\c90196\c90196\c98039;\csgenericrgb\c65490\c92549\c12941;\csgenericrgb\c97647\c98039\c95686;\csgenericrgb\c40784\c59216\c73333;\csgenericrgb\c9020\c77647\c63922;
+\csgenericrgb\c100000\c74902\c14902;\csgenericrgb\c38431\c38431\c38431;\csgenericrgb\c5098\c81961\c25098;\csgenericrgb\c7059\c56471\c76471;\csgenericrgb\c47451\c67059\c100000;
+\csgenericrgb\c92941\c49804\c28235;\csgenericrgb\c40000\c88235\c97255;\csgenericrgb\c58824\c92549\c24706;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 		
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 FP_ADD
+\f0\i0 \cf2  \cf5 :\cf0 \
+\cf2 			
+\f1\b \cf6 ILI9341_Fill
+\f0\b0 \cf7 (\cf2 ILI9341_COLOR_WHITE\cf7 )\cf5 ;\cf0 \
+\cf2 			
+\f1\b \cf6 ILI9341_Puts
+\f0\b0 \cf7 (\cf8 20\cf5 ,\cf2  \cf8 70\cf5 ,\cf2  \cf9 "\ul Ajout\ulnone  \ul empreinte\ulnone "\cf5 ,\cf2  \cf5 &\cf2 Font_11x18\cf5 ,\cf2  ILI9341_COLOR_BLACK\cf5 ,\cf2  ILI9341_COLOR_WHITE\cf7 )\cf5 ;\cf0 \
+\
+\
+\cf2 			
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1000\cf7 )\cf5 ;\cf0 \
+\
+\cf2 			
+\f1\b \cf3 if
+\f0\b0 \cf7 (
+\f1\b \cf6 fingerprint_capture_image
+\f0\b0 \cf7 ()\cf2  \cf5 &&\cf2  
+\f1\b \cf6 fingerprint_image_to_template
+\f0\b0 \cf7 ())\{\cf0 \
+\cf2 				
+\f1\b \cf6 ILI9341_Puts
+\f0\b0 \cf7 (\cf8 20\cf5 ,\cf2  \cf8 100\cf5 ,\cf2  \cf9 "Pose ton \ul doigt\ulnone "\cf5 ,\cf2  \cf5 &\cf2 Font_11x18\cf5 ,\cf2  ILI9341_COLOR_BLACK\cf5 ,\cf2  ILI9341_COLOR_WHITE\cf7 )\cf5 ;\cf0 \
+\cf2 			\cf7 \}
+\f1\b \cf3 else
+\f0\b0 \cf7 \{\cf0 \
+\cf2 				
+\f1\b \cf6 ILI9341_Puts
+\f0\b0 \cf7 (\cf8 20\cf5 ,\cf2  \cf8 100\cf5 ,\cf2  \cf9 "\ul Erreur\ulnone , \ul veuillez\ulnone  \ul reessayer\ulnone "\cf5 ,\cf2  \cf5 &\cf2 Font_11x18\cf5 ,\cf2  ILI9341_COLOR_BLACK\cf5 ,\cf2  ILI9341_COLOR_WHITE\cf7 )\cf5 ;\cf0 \
+\cf2 			\cf7 \}\cf0 \
+\
+\cf2 			\cf10 currentState\cf2  \cf5 =\cf2  
+\f2\i \cf4 IDLE
+\f0\i0 \cf5 ;\cf0 \
+\cf2 			
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\
+\
+\
+\
+\
+////////////////////////////\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf11 /**\cf0 \
+\cf11  ******************************************************************************\cf0 \
+\cf11  * @file    fingerprint.c\cf0 \
+\cf11  * @author  \ul Louis\ulnone  \ul Baffour\cf0 \ulnone \
+\cf11  * @version V1.0\cf0 \
+\cf11  * @date    21/05/2025\cf0 \
+\cf11  * @brief   \ul Fonctionnement\ulnone  \ul du\ulnone  \ul lecteur\ulnone  d'empreinte\cf0 \
+\cf11  ******************************************************************************\cf0 \
+\cf11  */\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stm32g4xx_hal.h"\cf0 \
+\
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "config.h"\cf0 \
+
+\f1\b \cf3 #if
+\f0\b0 \cf2  USE_FINGERPRINT\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stm32g4_utils.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "fingerprint.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stm32g4_uart.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stm32g4_gpio.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stdio.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "stm32g4_systick.h"\cf0 \
+
+\f1\b \cf3 #include
+\f0\b0 \cf2  \cf9 "tft_ili9341/stm32g4_ili9341.h"\cf0 \
+\
+
+\f1\b \cf3 #ifndef
+\f0\b0 \cf2  FINGERPRINT_UART_ID\cf0 \
+
+\f1\b \cf3 #define
+\f0\b0 \cf2  
+\f1\b \cf12 FINGERPRINT_UART_ID
+\f0\b0 \cf2  UART1_ID\cf0 \
+
+\f1\b \cf3 #endif
+\f0\b0 \cf0 \
+\
+
+\f1\b \cf3 #ifndef
+\f0\b0 \cf2  FINGERPRINT_MODE_SELECTOR_GPIO\cf0 \
+
+\f1\b \cf3 #define
+\f0\b0 \cf2  
+\f1\b \cf12 FINGERPRINT_MODE_SELECTOR_GPIO
+\f0\b0 \cf2  GPIOA\cf0 \
+
+\f1\b \cf3 #endif
+\f0\b0 \cf0 \
+\
+
+\f1\b \cf3 #ifndef
+\f0\b0 \cf2  FINGERPRINT_MODE_SELECTOR_PIN\cf0 \
+
+\f1\b \cf3 #define
+\f0\b0 \cf2  
+\f1\b \cf12 FINGERPRINT_MODE_SELECTOR_PIN
+\f0\b0 \cf2  GPIO_PIN_12\cf0 \
+
+\f1\b \cf3 #endif
+\f0\b0 \cf0 \
+\
+
+\f1\b \cf3 #define
+\f0\b0 \cf2  
+\f1\b \cf12 MAX_PAGES
+\f0\b0 \cf2  40\cf0 \
+\
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 fingerprint_page_t
+\f0\b0 \cf2  fingerprint_pages\cf7 [\cf2 MAX_PAGES\cf7 ]\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool flag_answer_received \cf5 =\cf2  false\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool flag_cannot_detect_finger \cf5 =\cf2  false\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool flag_fail_to_collect_finger \cf5 =\cf2  false\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  
+\f1\b \cf13 confirmation_code_e
+\f0\b0 \cf2  confirmation_code\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  t \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  pageid \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf3 volatile
+\f0\b0 \cf2  bool mode_save_new_finger \cf5 =\cf2  false\cf5 ;\cf0 \
+\
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 fingerprint_process_ms
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 t\cf7 )\cf0 \
+\cf2 		t\cf5 --;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 fingerprint_set_mode_save_new_finger
+\f0\b0 \cf7 (\cf2 bool \cf14 enable\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	mode_save_new_finger \cf5 =\cf2  \cf14 enable\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 fingerprint_process_main
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf15 c\cf5 ;\cf0 \
+\
+\
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf6 BSP_UART_data_ready
+\f0\b0 \cf7 (\cf2 FINGERPRINT_UART_ID\cf7 ))\cf2  \cf7 \{\cf0 \
+\cf2 		\cf10 c\cf2  \cf5 =\cf2  
+\f1\b \cf6 BSP_UART_get_next_byte
+\f0\b0 \cf7 (\cf2 FINGERPRINT_UART_ID\cf7 )\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf6 parse_frames
+\f0\b0 \cf7 (\cf10 c\cf5 ,\cf2  \cf5 &\cf10 frame\cf7 ))\cf2  \cf7 \{\cf0 \
+\cf2 			
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 ==\cf2  
+\f2\i \cf4 PID_ACK
+\f0\i0 \cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 				flag_answer_received \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 				confirmation_code \cf5 =\cf2  \cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 switch
+\f0\b0 \cf2  \cf7 (\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ])\cf2  \cf7 \{\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x00\cf5 :\cf0 \
+\cf2 					flag_ack \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x01\cf5 :\cf0 \
+\cf2 					flag_ack_fail \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x02\cf5 :\cf0 \
+\cf2 					flag_cannot_detect_finger \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x03\cf5 :\cf0 \
+\cf2 					flag_fail_to_collect_finger \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x0a\cf5 :\cf0 \
+\cf2 					flag_ack_fail \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				
+\f1\b \cf3 case
+\f0\b0 \cf2  \cf8 0x09\cf5 :\cf0 \
+\cf2 					flag_ack_fail \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 					
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 				\cf7 \}\cf0 \
+\cf2 			\cf7 \}\cf0 \
+\cf2 			
+\f1\b \cf3 for
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf3 int
+\f0\b0 \cf2  \cf15 i\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf2  \cf10 i\cf2  \cf5 <\cf2  \cf10 frame\cf5 .\cf16 length\cf2  \cf5 &&\cf2  \cf10 i\cf2  \cf5 <\cf2  \cf8 256\cf5 ;\cf2  \cf10 i\cf5 ++\cf7 )\cf0 \
+\cf2 				
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "%02x "\cf5 ,\cf2  \cf10 frame\cf5 .\cf16 datas\cf7 [\cf10 i\cf7 ])\cf5 ;\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "\\n"\cf7 )\cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 fingerprint_init
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf6 BSP_UART_init
+\f0\b0 \cf7 (\cf2 FINGERPRINT_UART_ID\cf5 ,\cf2  \cf8 57600\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 300\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 BSP_systick_add_callback_function
+\f0\b0 \cf7 (\cf5 &
+\f1\b \cf6 fingerprint_process_ms
+\f0\b0 \cf7 )\cf5 ;\cf0 \
+\cf2 	pageid \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+\cf2 	bool \cf15 mode\cf5 ;\cf0 \
+\cf2 	\cf10 mode\cf2  \cf5 =\cf2  
+\f1\b \cf6 HAL_GPIO_ReadPin
+\f0\b0 \cf7 (\cf2 FINGERPRINT_MODE_SELECTOR_GPIO\cf5 ,\cf0 \
+\cf2 			FINGERPRINT_MODE_SELECTOR_PIN\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 fingerprint_set_mode_save_new_finger
+\f0\b0 \cf7 (\cf2 false\cf7 )\cf5 ;\cf2  \cf11 // \ul Faux\cf0 \ulnone \
+\
+\cf2 	
+\f1\b \cf3 for
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf3 int
+\f0\b0 \cf2  \cf15 i\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf2  \cf10 i\cf2  \cf5 <\cf2  MAX_PAGES\cf5 ;\cf2  \cf10 i\cf5 ++\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf10 i\cf7 ]\cf5 .\cf16 pageid\cf2  \cf5 =\cf2  \cf10 i\cf5 ;\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf10 i\cf7 ]\cf5 .\cf16 is_occupied\cf2  \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf10 i\cf7 ]\cf5 .\cf16 nom_utilisateur\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf9 '\\0'\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_turn_on_led
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf6 reset_fingerprint_flags
+\f0\b0 \cf7 ()\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf6 send_command_withoutparameters
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  OPEN_LED\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_answer_received \cf5 &&\cf2  confirmation_code \cf5 ==\cf2  
+\f2\i \cf4 CONFIRMATION_CODE_OK
+\f0\i0 \cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_answer_received \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_answer_received \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf11 // \ul Fonction\ulnone  \ul qui\ulnone  \ul envoie\ulnone  \ul une\ulnone  \ul commande\ulnone  \ul au\ulnone  \ul capteur\ulnone  d'empreintes pour capturer \ul une\ulnone  image\cf0 \
+\cf11 // \ul Retourne\ulnone  true \ul si\ulnone  \ul la\ulnone  \ul commande\ulnone  a \ul \'e9t\'e9\ulnone  \ul accept\'e9e\ulnone  (ACK \ul re\'e7u\ulnone ), false \ul sinon\cf0 \ulnone \
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_capture_image
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\
+\cf2 	
+\f1\b \cf6 reset_fingerprint_flags
+\f0\b0 \cf7 ()\cf5 ;\cf0 \
+\
+\cf2     \cf11 // \ul Envoie\ulnone  \ul la\ulnone  \ul commande\ulnone  "GET_IMG" \ul au\ulnone  \ul capteur\ulnone  d'empreintes, \'e0 l'adresse par \ul d\'e9faut\cf0 \ulnone \
+\cf2     
+\f1\b \cf6 send_command_withoutparameters
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  GET_IMG\cf7 )\cf5 ;\cf0 \
+\
+\
+\cf2     
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\
+\
+\cf2     \cf11 // \ul Boucle\ulnone  d'attente \ul de\ulnone  \ul reponse\cf0 \ulnone \
+\cf2     
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2         
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\
+\cf2     \cf11 // \ul Si\ulnone  \ul le\ulnone  \ul capteur\ulnone  a \ul r\'e9pondu\ulnone  \ul avec\ulnone  \ul un\ulnone  ACK, on \ul consid\'e8re\ulnone  \ul que\ulnone  l'image a \ul bien\ulnone  \ul \'e9t\'e9\ulnone  \ul captur\'e9e\cf0 \ulnone \
+\cf2     
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2         flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2         
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2     \cf7 \}\cf0 \
+\
+\cf2     \cf11 // \ul Si\ulnone  on arrive \ul ici\ulnone , c\'92\ul est\ulnone  \ul que\ulnone  \ul soit\ulnone  on a \ul re\'e7u\ulnone  \ul un\ulnone  NACK, \ul soit\ulnone  \ul le\ulnone  timeout \ul est\ulnone  \ul \'e9coul\'e9\cf0 \ulnone \
+\cf2     flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2     
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_image_to_template
+\f0\b0 \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 buffer_id\cf7 )\cf2  \cf7 \{\cf0 \
+\
+\cf2 	
+\f1\b \cf6 reset_fingerprint_flags
+\f0\b0 \cf7 ()\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf6 send_Img2Tz
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  \cf14 buffer_id\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_create_model
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf6 send_command_withoutparameters
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  REG_MODEL\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_store_template
+\f0\b0 \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 page\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf6 send_store
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  \cf8 0x01\cf5 ,\cf2  \cf14 page\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 8000\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\
+\cf2 		\cf11 //\ul sotckage\ulnone  \ul de\ulnone  \ul la\ulnone  page\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf14 page\cf7 ]\cf5 .\cf16 is_occupied\cf2  \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf17 snprintf
+\f0\b0 \cf7 (\cf2 fingerprint_pages\cf7 [\cf14 page\cf7 ]\cf5 .\cf16 nom_utilisateur\cf5 ,\cf0 \
+\cf2 				
+\f1\b \cf3 sizeof
+\f0\b0 \cf7 (\cf2 fingerprint_pages\cf7 [\cf14 page\cf7 ]\cf5 .\cf16 nom_utilisateur\cf7 )\cf5 ,\cf2  \cf9 "User_%03d"\cf5 ,\cf0 \
+\cf2 				\cf14 page\cf7 )\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_search
+\f0\b0 \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 start_page\cf5 ,\cf2  
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 page_count\cf5 ,\cf0 \
+\cf2 		
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 pageid_out\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf6 reset_fingerprint_flags
+\f0\b0 \cf7 ()\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf6 send_search
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  \cf8 0x01\cf5 ,\cf2  \cf14 start_page\cf5 ,\cf2  \cf14 pageid_out\cf7 )\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 fingerprint_delete
+\f0\b0 \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 page\cf7 )\cf2  \cf7 \{\cf0 \
+\
+\cf2 	
+\f1\b \cf6 reset_fingerprint_flags
+\f0\b0 \cf7 ()\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf6 send_delete
+\f0\b0 \cf7 (\cf2 MODULE_DEFAULT_ADDRESS\cf5 ,\cf2  \cf14 page\cf5 ,\cf2  \cf8 1\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf15 timeout\cf2  \cf5 =\cf2  \cf8 4000\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 while
+\f0\b0 \cf2  \cf7 (\cf5 !\cf2 flag_ack \cf5 &&\cf2  \cf5 !\cf2 flag_ack_fail \cf5 &&\cf2  \cf10 timeout\cf5 --\cf7 )\cf0 \
+\cf2 		
+\f1\b \cf6 HAL_Delay
+\f0\b0 \cf7 (\cf8 1\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf2 flag_ack\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf14 page\cf7 ]\cf5 .\cf16 is_occupied\cf2  \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 		fingerprint_pages\cf7 [\cf14 page\cf7 ]\cf5 .\cf16 nom_utilisateur\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf9 '\\0'\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 return
+\f0\b0 \cf2  true\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_setPwd
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 password\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2\cf2  \cf5 +\cf2  \cf8 5\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x12\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 1\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 password\cf2  \cf5 >>\cf2  \cf8 24\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 2\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 password\cf2  \cf5 >>\cf2  \cf8 16\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 3\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 password\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 4\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 password\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_genImg
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 password\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2\cf2  \cf5 +\cf2  \cf8 1\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x01\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_Img2Tz
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 buffer_id\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2\cf2  \cf5 +\cf2  \cf8 2\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x02\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 1\cf7 ]\cf2  \cf5 =\cf2  \cf14 buffer_id\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_store
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 buffer_id\cf5 ,\cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf14 pageid\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf2  \cf11 // \ul affecte\ulnone  l'adresse \ul de\ulnone  destination \'e0 \ul la\ulnone  \ul trame\cf0 \ulnone \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf2  \cf11 // Type \ul de\ulnone  \ul tram\cf0 \ulnone \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2\cf2  \cf5 +\cf2  \cf8 4\cf5 ;\cf2  \cf11 //\ul longueur\ulnone  \ul des\ulnone  \ul donnees\cf0 \ulnone \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x06\cf5 ;\cf2  \cf11 // \ul stocke\ulnone  \ul dans\ulnone  \ul le\ulnone  premier \ul octet\ulnone  (\ul la\ulnone  \ul commande\ulnone  store \ul est\ulnone  0x06)\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 1\cf7 ]\cf2  \cf5 =\cf2  \cf14 buffer_id\cf5 ;\cf2  \cf11 // stock \ul identifiant\ulnone  \ul du\ulnone  buffer \ul dans\ulnone  \ul le\ulnone  \ul deuxi\'e8me\ulnone  \ul octet\cf0 \ulnone \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 2\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 pageid\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf2  \cf11 // stock \ul octet\ulnone  \ul du\ulnone  \ul poids\ulnone  fort \ul de\ulnone  l'image\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 3\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 pageid\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf2  \cf11 // stock \ul octet\ulnone  \ul du\ulnone  \ul poids\ulnone  \ul faible\ulnone  \ul de\ulnone  l'image\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_command_withoutparameters
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 command_id\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2+1\cf5 ;\cf2   \cf11 // \ul juste\ulnone  1 \ul octet\ulnone  \ul de\ulnone  \ul donn\'e9e\ulnone  + 2 \ul de\ulnone  \ul protocoles\cf0 \ulnone \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf14 command_id\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_search
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 address\cf5 ,\cf2  
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 buffer_id\cf5 ,\cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf14 start_page\cf5 ,\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 		
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf14 page_num\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf15 frame\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 addr\cf2  \cf5 =\cf2  \cf14 address\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 length\cf2  \cf5 =\cf2  \cf8 2\cf2  \cf5 +\cf2  \cf8 6\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x04\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 1\cf7 ]\cf2  \cf5 =\cf2  \cf14 buffer_id\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 2\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 start_page\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 3\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 start_page\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 4\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 page_num\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 frame\cf5 .\cf16 datas\cf7 [\cf8 5\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf7 )\cf2  \cf7 ((\cf14 page_num\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf7 )\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 send_command
+\f0\b0 \cf7 (\cf5 &\cf10 frame\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_delete
+\f0\b0 \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf2  \cf14 addr\cf5 ,\cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf14 pageid\cf5 ,\cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf14 num\cf7 )\cf2  \cf7 \{\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf15 data\cf7 [\cf8 4\cf7 ]\cf5 ;\cf0 \
+\cf2 	\cf10 data\cf7 [\cf8 0\cf7 ]\cf2  \cf5 =\cf2  \cf14 pageid\cf2  \cf5 >>\cf2  \cf8 8\cf5 ;\cf0 \
+\cf2 	\cf10 data\cf7 [\cf8 1\cf7 ]\cf2  \cf5 =\cf2  \cf14 pageid\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 data\cf7 [\cf8 2\cf7 ]\cf2  \cf5 =\cf2  \cf14 num\cf2  \cf5 >>\cf2  \cf8 8\cf5 ;\cf0 \
+\cf2 	\cf10 data\cf7 [\cf8 3\cf7 ]\cf2  \cf5 =\cf2  \cf14 num\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 fingerprint_delete
+\f0\b0 \cf7 (\cf14 pageid\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 bool 
+\f1\b \cf12 parse_frames
+\f0\b0 \cf7 (
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf14 byte\cf5 ,\cf2  
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf5 *\cf14 pframe\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf3 typedef
+\f0\b0 \cf2  
+\f1\b \cf3 enum
+\f0\b0 \cf2  \cf7 \{\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_HEADER_WAIT_01
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_ADDR0
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_ADDR1
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_ADDR2
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_ADDR3
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_PID
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_LENGTH0
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_LENGTH1
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_DATAS
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_CS0
+\f0\i0 \cf5 ,\cf0 \
+\cf2 		
+\f2\i \cf4 STEP_CS1
+\f0\i0 \cf0 \
+\cf2 	\cf7 \}\cf2  
+\f1\b \cf13 step_e
+\f0\b0 \cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 step_e
+\f0\b0 \cf2  \cf15 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf15 size_datas\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf15 checksum\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 static
+\f0\b0 \cf2  
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf15 sum\cf5 ;\cf0 \
+\
+\cf2 	bool \cf15 ret\cf5 ;\cf0 \
+\cf2 	\cf10 ret\cf2  \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf10 step\cf2  \cf5 ==\cf2  
+\f2\i \cf4 STEP_PID
+\f0\i0 \cf7 )\cf0 \
+\cf2 		\cf10 sum\cf2  \cf5 =\cf2  \cf14 byte\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 else
+\f0\b0 \cf2  
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf10 step\cf2  \cf5 ==\cf2  
+\f2\i \cf4 STEP_LENGTH0
+\f0\i0 \cf2  \cf5 ||\cf2  \cf10 step\cf2  \cf5 ==\cf2  
+\f2\i \cf4 STEP_LENGTH1
+\f0\i0 \cf2  \cf5 ||\cf2  \cf10 step\cf2  \cf5 ==\cf2  
+\f2\i \cf4 STEP_DATAS
+\f0\i0 \cf7 )\cf0 \
+\cf2 		\cf10 sum\cf2  \cf5 =\cf2  \cf10 sum\cf2  \cf5 +\cf2  \cf7 ((
+\f1\b \cf13 uint16_t
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 byte\cf7 ))\cf5 ;\cf0 \
+\
+\cf2 	
+\f1\b \cf3 switch
+\f0\b0 \cf2  \cf7 (\cf10 step\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 :\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf14 byte\cf2  \cf5 ==\cf2  \cf8 0xEF\cf7 )\cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_01
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_01
+\f0\i0 \cf5 :\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf14 byte\cf2  \cf5 ==\cf2  \cf8 0x01\cf7 )\cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_ADDR0
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 else
+\f0\b0 \cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_ADDR0
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf7 )\cf2  \cf14 byte\cf2  \cf5 <<\cf2  \cf8 24\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_ADDR1
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 |=\cf2  \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf7 )\cf2  \cf14 byte\cf2  \cf5 <<\cf2  \cf8 16\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_ADDR2
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 |=\cf2  \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf7 )\cf2  \cf14 byte\cf2  \cf5 <<\cf2  \cf8 8\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_ADDR3
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 |=\cf2  \cf7 (
+\f1\b \cf13 uint32_t
+\f0\b0 \cf7 )\cf2  \cf14 byte\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_PID
+\f0\i0 \cf5 :\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf14 byte\cf2  \cf5 ==\cf2  
+\f2\i \cf4 PID_COMMAND
+\f0\i0 \cf2  \cf5 ||\cf2  \cf14 byte\cf2  \cf5 ==\cf2  
+\f2\i \cf4 PID_DATA
+\f0\i0 \cf2  \cf5 ||\cf2  \cf14 byte\cf2  \cf5 ==\cf2  
+\f2\i \cf4 PID_ACK
+\f0\i0 \cf0 \
+\cf2 				\cf5 ||\cf2  \cf14 byte\cf2  \cf5 ==\cf2  
+\f2\i \cf4 PID_END
+\f0\i0 \cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 			\cf14 pframe\cf5 ->\cf16 pid\cf2  \cf5 =\cf2  \cf14 byte\cf5 ;\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "\ul pid\ulnone  OK=%d -"\cf5 ,\cf2  \cf14 pframe\cf5 ->\cf16 pid\cf7 )\cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf2  
+\f1\b \cf3 else
+\f0\b0 \cf2  \cf7 \{\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "\ul pid\ulnone  KO !!!=%d\\n"\cf5 ,\cf2  \cf14 pframe\cf5 ->\cf16 pid\cf7 )\cf5 ;\cf0 \
+\cf2 			\cf14 pframe\cf5 ->\cf16 pid\cf2  \cf5 =\cf2  
+\f2\i \cf4 PID_UNKNOW
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_LENGTH0
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 =\cf2  U16FROMU8\cf7 (\cf14 byte\cf5 ,\cf2  \cf8 0\cf7 )\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_LENGTH1
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 |=\cf2  \cf7 ((
+\f1\b \cf13 uint16_t
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 byte\cf7 ))\cf5 ;\cf0 \
+\
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 <=\cf2  \cf8 256\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 			\cf10 size_datas\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_DATAS
+\f0\i0 \cf5 ;\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "length=%d\\n"\cf5 ,\cf2  \cf14 pframe\cf5 ->\cf16 length\cf7 )\cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf2  
+\f1\b \cf3 else
+\f0\b0 \cf2  \cf7 \{\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "\ul mauvais\ulnone  length=%d\\n"\cf5 ,\cf2  \cf14 pframe\cf5 ->\cf16 length\cf7 )\cf5 ;\cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_DATAS
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf14 pframe\cf5 ->\cf16 datas\cf7 [\cf10 size_datas\cf7 ]\cf2  \cf5 =\cf2  \cf14 byte\cf5 ;\cf0 \
+\cf2 		\cf10 size_datas\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf10 size_datas\cf2  \cf5 >=\cf2  \cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 -\cf2  \cf8 2\cf7 )\cf0 \
+\cf2 			\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_CS0
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_CS0
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf10 checksum\cf2  \cf5 =\cf2  \cf7 ((
+\f1\b \cf13 uint16_t
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 byte\cf7 ))\cf2  \cf5 <<\cf2  \cf8 8\cf5 ;\cf0 \
+\cf2 		\cf10 step\cf5 ++;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 case
+\f0\b0 \cf2  
+\f2\i \cf4 STEP_CS1
+\f0\i0 \cf5 :\cf0 \
+\cf2 		\cf10 checksum\cf2  \cf5 |=\cf2  \cf7 ((
+\f1\b \cf13 uint16_t
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 byte\cf7 ))\cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 if
+\f0\b0 \cf2  \cf7 (\cf10 checksum\cf2  \cf5 ==\cf2  \cf10 sum\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 			\cf10 ret\cf2  \cf5 =\cf2  true\cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf2  
+\f1\b \cf3 else
+\f0\b0 \cf2  \cf7 \{\cf0 \
+\cf2 			
+\f1\b \cf17 printf
+\f0\b0 \cf7 (\cf9 "\ul mauvais\ulnone  checksum sum=%d, checksum=%d!\\n"\cf5 ,\cf2  \cf10 sum\cf5 ,\cf2  \cf10 checksum\cf7 )\cf5 ;\cf0 \
+\cf2 		\cf7 \}\cf0 \
+\cf2 		\cf10 step\cf2  \cf5 =\cf2  
+\f2\i \cf4 STEP_HEADER_WAIT_EF
+\f0\i0 \cf5 ;\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 default
+\f0\b0 \cf5 :\cf0 \
+\cf2 		
+\f1\b \cf3 break
+\f0\b0 \cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	
+\f1\b \cf3 return
+\f0\b0 \cf2  \cf10 ret\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 send_command
+\f0\b0 \cf7 (
+\f1\b \cf13 frame_t
+\f0\b0 \cf2  \cf5 *\cf14 pframe\cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 	
+\f1\b \cf13 uint8_t
+\f0\b0 \cf2  \cf15 buf\cf7 [\cf8 300\cf7 ]\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf15 size\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf8 0xEF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf8 0x01\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 >>\cf2  \cf8 24\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 >>\cf2  \cf8 16\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 addr\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 addr\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 pid\cf7 )\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf14 pframe\cf5 ->\cf16 length\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 for
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf3 int
+\f0\b0 \cf2  \cf15 i\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf2  \cf10 i\cf2  \cf5 <\cf2  \cf14 pframe\cf5 ->\cf16 length\cf2  \cf5 -\cf2  \cf8 2\cf5 ;\cf2  \cf10 i\cf5 ++\cf7 )\cf0 \
+\cf2 		\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf14 pframe\cf5 ->\cf16 datas\cf7 [\cf10 i\cf7 ]\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf13 uint16_t
+\f0\b0 \cf2  \cf15 sum\cf2  \cf5 =\cf2  \cf8 0\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf3 for
+\f0\b0 \cf2  \cf7 (
+\f1\b \cf3 int
+\f0\b0 \cf2  \cf15 i\cf2  \cf5 =\cf2  \cf8 6\cf5 ;\cf2  \cf10 i\cf2  \cf5 <\cf2  \cf8 6\cf2  \cf5 +\cf2  \cf14 pframe\cf5 ->\cf16 length\cf5 ;\cf2  \cf10 i\cf5 ++\cf7 )\cf2  \cf7 \{\cf0 \
+\cf2 		\cf10 sum\cf2  \cf5 +=\cf2  \cf7 (
+\f1\b \cf13 uint16_t
+\f0\b0 \cf7 )\cf2  \cf10 buf\cf7 [\cf10 i\cf7 ]\cf5 ;\cf0 \
+\cf2 	\cf7 \}\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf10 sum\cf2  \cf5 >>\cf2  \cf8 8\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	\cf10 buf\cf7 [\cf10 size\cf5 ++\cf7 ]\cf2  \cf5 =\cf2  \cf7 (
+\f1\b \cf3 char
+\f0\b0 \cf7 )\cf2  \cf7 (\cf10 sum\cf7 )\cf2  \cf5 &\cf2  \cf8 0xFF\cf5 ;\cf0 \
+\cf2 	
+\f1\b \cf6 BSP_UART_puts
+\f0\b0 \cf7 (\cf2 FINGERPRINT_UART_ID\cf5 ,\cf2  \cf10 buf\cf5 ,\cf2  \cf10 size\cf7 )\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 void
+\f0\b0 \cf2  
+\f1\b \cf12 reset_fingerprint_flags
+\f0\b0 \cf7 (
+\f1\b \cf3 void
+\f0\b0 \cf7 )\cf2  \cf7 \{\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2     flag_ack \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2     flag_ack_fail \cf5 =\cf2  false\cf5 ;\cf0 \
+\cf2     flag_answer_received \cf5 =\cf2  false\cf5 ;\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \}\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf3 #endif
+\f0\b0 \cf0 \
+\
+}

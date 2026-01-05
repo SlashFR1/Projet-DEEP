@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Vcard.c:69:13:NDEF_FillVcardStruct	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Vcard.c:114:13:NDEF_ExtractVcard	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Vcard.c:167:10:NDEF_ReadVcard	8	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Vcard.c:211:6:NDEF_PrepareVcardMessage	48	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Vcard.c:190:10:NDEF_WriteVcard	24	static

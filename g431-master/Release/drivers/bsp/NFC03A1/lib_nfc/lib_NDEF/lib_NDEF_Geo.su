@@ -1,0 +1,4 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Geo.c:120:13:NDEF_ReadURI_Geo	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Geo.c:152:10:NDEF_ReadGeo	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Geo.c:224:6:NDEF_PrepareGeoMessage	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Geo.c:203:10:NDEF_WriteGeo	24	static

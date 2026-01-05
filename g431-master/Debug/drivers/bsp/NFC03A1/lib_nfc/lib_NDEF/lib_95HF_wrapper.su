@@ -1,0 +1,2 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_95HF_wrapper.c:102:10:ReadData	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_95HF_wrapper.c:249:10:WriteData	16	static

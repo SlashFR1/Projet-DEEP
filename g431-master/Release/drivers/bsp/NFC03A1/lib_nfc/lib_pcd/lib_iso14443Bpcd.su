@@ -1,0 +1,6 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:188:8:ISO14443B_Init	40	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:246:8:ISO14443B_ReqB	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:279:8:ISO14443B_AttriB	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:327:8:ISO14443B_IsPresent	8	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:349:8:ISO14443B_Anticollision	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:374:8:ISO14443B_IsCardIntheField	16	static

@@ -1,0 +1,7 @@
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:119:13:ConfigManager_Start	0	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:85:13:ConfigManager_Init	8	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:134:15:ConfigManager_PORsequence	24	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:104:15:ConfigManager_IDN	16	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:190:6:ConfigManager_Stop	0	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:201:6:ConfigManager_HWInit	8	static
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:235:9:ConfigManager_TagHunting	8	static

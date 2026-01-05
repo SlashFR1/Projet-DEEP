@@ -1,0 +1,4 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.c:78:15:ISO7816_SendReceiveAPDU	11
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.c:170:8:ISO7816_SelectFile	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.c:204:8:ISO7816_ReadBinary	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.c:231:8:ISO7816_UpdateBinary	1

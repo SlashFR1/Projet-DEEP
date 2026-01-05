@@ -1,0 +1,2 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype5pcd.c:75:9:PCDNFCT5_ReadNDEF	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype5pcd.c:125:9:PCDNFCT5_WriteNDEF	200	static

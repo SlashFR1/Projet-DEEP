@@ -1,0 +1,4 @@
+../drivers/bsp/CODE/code.c:28:6:BSP_MATRIX_KEYBOARD_DETECT	16	static
+../drivers/bsp/CODE/code.c:56:12:BSP_MATRIX_KEYBOARD_VERIF	48	static
+../drivers/bsp/CODE/code.c:141:11:BSP_MATRIX_KEYBOARD_add_code	72	static
+../drivers/bsp/CODE/code.c:213:6:BSP_MATRIX_KEYBOARD_delete_code	72	static

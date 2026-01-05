@@ -1,0 +1,4 @@
+../drivers/bsp/GACHE/gache.c:19:7:GACHE_Init	1
+../drivers/bsp/GACHE/gache.c:33:6:GACHE_Activer	1
+../drivers/bsp/GACHE/gache.c:38:6:GACHE_Desactiver	1
+../drivers/bsp/GACHE/gache.c:42:6:GACHE_DEMO	1

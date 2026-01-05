@@ -1,0 +1,3 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype1pcd.c:72:16:PCDNFCT1_ReadAll	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype1pcd.c:123:9:PCDNFCT1_ReadNDEF	10
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype1pcd.c:173:9:PCDNFCT1_WriteNDEF	14

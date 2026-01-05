@@ -1,0 +1,7 @@
+../drivers/bsp/AS608/AS608.c:8:12:as608_send_command	8	static
+../drivers/bsp/AS608/AS608.c:15:12:as608_read_response	8	static
+../drivers/bsp/AS608/AS608.c:19:16:as608_get_last_status	0	static
+../drivers/bsp/AS608/AS608.c:23:6:as608_print_status	8	static
+../drivers/bsp/AS608/AS608.c:37:5:as608_get_image	40	static
+../drivers/bsp/AS608/AS608.c:53:5:as608_generate_feature	40	static
+../drivers/bsp/AS608/AS608.c:69:5:as608_match_feature	48	static

@@ -1,0 +1,12 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:74:17:NDEF_IsNDEFPresent	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:282:13:NDEF_ParseURI	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:254:13:NDEF_ParseMediaType	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:270:13:NDEF_ParseForumExternalType	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:203:13:NDEF_ParseWellKnownType	7
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:173:17:NDEF_ParseRecordHeader	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:95:17:NDEF_IdentifySPRecord	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:305:13:NDEF_ParseSP	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:367:10:NDEF_IdentifyNDEF	8
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:474:10:NDEF_ReadNDEF	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:502:10:NDEF_WriteNDEF	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:522:10:NDEF_IdentifyBuffer	6

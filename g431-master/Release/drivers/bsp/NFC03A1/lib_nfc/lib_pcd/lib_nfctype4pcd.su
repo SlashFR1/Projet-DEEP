@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype4pcd.c:80:15:PCDNFCT4_SelectApplication	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype4pcd.c:98:15:PCDNFCT4_SelectCCfile	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype4pcd.c:143:16:PCDNFCT4_ReadBinary	8	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype4pcd.c:190:9:PCDNFCT4_ReadNDEF	296	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype4pcd.c:256:9:PCDNFCT4_WriteNDEF	72	static

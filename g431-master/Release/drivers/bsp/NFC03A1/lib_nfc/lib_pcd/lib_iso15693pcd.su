@@ -1,0 +1,13 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:240:15:ISO15693_Inventory	40	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:405:15:ISO15693_StayQuiet.isra	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:905:16:ISO15693_WriteTagData	328	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:347:16:ISO15693_Inventory16Slots.constprop	48	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:971:8:ISO15693_Init	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1005:8:ISO15693_GetUID	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1050:8:ISO15693_GetSystemInfo	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1086:8:ISO15693_SplitInventoryResponse	20	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1123:8:ISO15693_RunAntiCollision	1112	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1278:8:ISO15693_RunInventory16slots	568	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1351:8:ISO15693_GetTagIdentification	48	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1441:9:ISO15693_ReadBytesTagData	208	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso15693pcd.c:1472:9:ISO15693_WriteBytes_TagData	88	static

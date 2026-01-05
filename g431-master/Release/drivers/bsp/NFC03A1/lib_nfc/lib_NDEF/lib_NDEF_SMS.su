@@ -1,0 +1,4 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:126:13:NDEF_ReadURI_SMS	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:158:10:NDEF_ReadSMS	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:231:6:NDEF_PrepareSMSMessage	32	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:210:10:NDEF_WriteSMS	24	static

@@ -1,0 +1,11 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:94:13:ISO14443B_CompleteStruture	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:80:13:ISO14443B_InitStructure	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:112:15:ISO14443B_WriteARConfigB	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:131:15:ISO14443BReadARConfigB	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:153:15:ISO14443B_WriteAndCheckARConfigB	5
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:188:8:ISO14443B_Init	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:246:8:ISO14443B_ReqB	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:279:8:ISO14443B_AttriB	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:327:8:ISO14443B_IsPresent	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:349:8:ISO14443B_Anticollision	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Bpcd.c:374:8:ISO14443B_IsCardIntheField	2

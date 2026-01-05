@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Email.c:69:13:NDEF_FillEmailStruct	13
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Email.c:149:13:NDEF_ReadURI_Email	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Email.c:181:10:NDEF_ReadEmail	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Email.c:253:6:NDEF_PrepareEmailMessage	10
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_Email.c:232:10:NDEF_WriteEmail	1

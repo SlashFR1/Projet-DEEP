@@ -1,0 +1,155 @@
+drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.o: \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.c ../app/config.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal.h \
+ ../core/Inc/stm32g4xx_hal_conf.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rcc.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_def.h \
+ ../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g4xx.h \
+ ../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g431xx.h \
+ ../drivers/cmsis/Include/core_cm4.h \
+ ../drivers/cmsis/Include/cmsis_version.h \
+ ../drivers/cmsis/Include/cmsis_compiler.h \
+ ../drivers/cmsis/Include/cmsis_gcc.h \
+ ../drivers/cmsis/Include/mpu_armv7.h \
+ ../drivers/cmsis/Device/ST/STM32G4xx/Include/system_stm32g4xx.h \
+ ../drivers/stm32g4xx_hal/Inc/Legacy/stm32_hal_legacy.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rcc_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_gpio.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_gpio_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dma.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dma_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_cortex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_adc.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_ll_adc.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_adc_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dac.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dac_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_exti.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash_ramfunc.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_i2c.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_i2c_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_pwr.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_pwr_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rng.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rtc.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rtc_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_spi.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_spi_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_tim.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_tim_ex.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_uart.h \
+ ../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_uart_ex.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_PCD.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/lib_95HF.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../CR95HF/drv_95HF.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../common.h \
+ ../drivers/bsp/stm32g4_sys.h ../drivers/bsp/stm32g4_uart.h \
+ ../drivers/bsp/stm32g4_utils.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../stm32g4_nfc03a1.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/lib_95HFConfigManager.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso15693pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_PCD.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso14443Apcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso14443Bpcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso18092pcd.h \
+ ../drivers/bsp/stm32g4_uart.h ../drivers/bsp/stm32g4_spi.h \
+ ../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g431xx.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_pcd/lib_iso14443A.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../miscellaneous.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_wrapper.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/../../common.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_NDEF_URI.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_NDEF.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_wrapper.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype1pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_PCD.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype2pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype3pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso18092pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype4pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso7816pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype5pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso15693pcd.h \
+ ../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443A.h
+../app/config.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal.h:
+../core/Inc/stm32g4xx_hal_conf.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rcc.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_def.h:
+../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g4xx.h:
+../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g431xx.h:
+../drivers/cmsis/Include/core_cm4.h:
+../drivers/cmsis/Include/cmsis_version.h:
+../drivers/cmsis/Include/cmsis_compiler.h:
+../drivers/cmsis/Include/cmsis_gcc.h:
+../drivers/cmsis/Include/mpu_armv7.h:
+../drivers/cmsis/Device/ST/STM32G4xx/Include/system_stm32g4xx.h:
+../drivers/stm32g4xx_hal/Inc/Legacy/stm32_hal_legacy.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rcc_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_gpio.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_gpio_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dma.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dma_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_cortex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_adc.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_ll_adc.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_adc_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dac.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_dac_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_exti.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_flash_ramfunc.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_i2c.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_i2c_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_pwr.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_pwr_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rng.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rtc.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_rtc_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_spi.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_spi_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_tim.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_tim_ex.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_uart.h:
+../drivers/stm32g4xx_hal/Inc/stm32g4xx_hal_uart_ex.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso7816pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_PCD.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/lib_95HF.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../CR95HF/drv_95HF.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../common.h:
+../drivers/bsp/stm32g4_sys.h:
+../drivers/bsp/stm32g4_uart.h:
+../drivers/bsp/stm32g4_utils.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../stm32g4_nfc03a1.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/lib_95HFConfigManager.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso15693pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_PCD.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso14443Apcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso14443Bpcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/common/../lib_pcd/lib_iso18092pcd.h:
+../drivers/bsp/stm32g4_uart.h:
+../drivers/bsp/stm32g4_spi.h:
+../drivers/cmsis/Device/ST/STM32G4xx/Include/stm32g431xx.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_pcd/lib_iso14443A.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../miscellaneous.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_wrapper.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/../../common.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_NDEF_URI.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_NDEF.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../../lib_nfc/lib_NDEF/lib_wrapper.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype1pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_PCD.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype2pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype3pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso18092pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype4pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso7816pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_nfctype5pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/../common/../lib_pcd/lib_iso15693pcd.h:
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443A.h:

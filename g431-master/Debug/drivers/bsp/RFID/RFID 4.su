@@ -1,0 +1,4 @@
+../drivers/bsp/RFID/RFID.c:14:6:BSP_NFC03A1_DETECTE	8	static
+../drivers/bsp/RFID/RFID.c:47:6:BSP_NFC03A1_VERIF	152	static
+../drivers/bsp/RFID/RFID.c:81:6:BSP_NFC03A1_ADD	160	static
+../drivers/bsp/RFID/RFID.c:111:6:BSP_NFC03A1_DELETE	160	static

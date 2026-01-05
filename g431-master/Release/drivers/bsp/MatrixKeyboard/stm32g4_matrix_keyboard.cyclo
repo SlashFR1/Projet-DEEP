@@ -1,0 +1,17 @@
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:420:6:BSP_MATRIX_KEYBOARD_demo_process_1ms	2
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:499:13:MATRIX_KEYBOARD_touch_to_key	6
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:658:13:keyboard_pin_read.constprop	3
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:615:13:keyboard_pin_set_input.constprop	3
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:571:13:MATRIX_KEYBOARD_write_bit_output.constprop	1
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:594:13:keyboard_pin_set_output.constprop	3
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:637:13:keyboard_pin_write.constprop	3
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:519:17:MATRIX_KEYBOARD_read_all_touchs	5
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:94:6:BSP_MATRIX_KEYBOARD_init	1
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:431:6:BSP_MATRIX_KEYBOARD_is_pressed	5
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:461:6:BSP_MATRIX_KEYBOARD_press_and_release_events	2
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:117:6:BSP_MATRIX_KEYBOARD_demo_process_main	8
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:180:6:BSP_MATRIX_KEYBOARD_DETECT	6
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:363:6:BSP_MATRIX_KEYBOARD_delete_code	8
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:207:12:BSP_MATRIX_KEYBOARD_VERIF	14
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:291:11:BSP_MATRIX_KEYBOARD_add_code	10
+../drivers/bsp/MatrixKeyboard/stm32g4_matrix_keyboard.c:485:6:MATRIX_KEYBOARD_get_key	2

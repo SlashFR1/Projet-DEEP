@@ -1,0 +1,6 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:77:15:FELICA_Init	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:111:15:FELICA_REQC	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:132:6:FELICA_Initialization	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:145:8:FELICA_IsPresent	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:173:8:FELICA_Anticollision	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso18092pcd.c:185:8:FELICA_CardTest	2

@@ -1,0 +1,7 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:229:13:PCDNFCT3_UpdateCheckSum	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:76:16:PCDNFCT3_ReadAttribInfo	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:123:16:PCDNFCT3_ReadMessage	7
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:178:16:PCDNFCT3_WriteMessage	11
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:95:16:PCDNFCT3_WriteAttribInfo	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:253:9:PCDNFCT3_ReadNDEF	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype3pcd.c:284:9:PCDNFCT3_WriteNDEF	7

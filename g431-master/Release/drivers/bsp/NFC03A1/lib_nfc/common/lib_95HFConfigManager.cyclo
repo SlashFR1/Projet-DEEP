@@ -1,0 +1,3 @@
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:190:6:ConfigManager_Stop	1
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:201:6:ConfigManager_HWInit	9
+../drivers/bsp/NFC03A1/lib_nfc/common/lib_95HFConfigManager.c:235:9:ConfigManager_TagHunting	18

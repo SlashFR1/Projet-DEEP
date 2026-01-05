@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype2pcd.c:109:16:PCDNFCT2_SectorSelect	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype2pcd.c:73:16:PCDNFCT2_Read	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype2pcd.c:91:16:PCDNFCT2_Write	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype2pcd.c:144:9:PCDNFCT2_ReadNDEF	17
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_nfctype2pcd.c:224:9:PCDNFCT2_WriteNDEF	22

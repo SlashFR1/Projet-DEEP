@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:173:17:NDEF_ParseRecordHeader	18
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:367:10:NDEF_IdentifyNDEF	7
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:474:10:NDEF_ReadNDEF	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:502:10:NDEF_WriteNDEF	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF.c:522:10:NDEF_IdentifyBuffer	5

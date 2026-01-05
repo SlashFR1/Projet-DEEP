@@ -1,0 +1,5 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:67:13:NDEF_FillSMSStruct	8
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:126:13:NDEF_ReadURI_SMS	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:158:10:NDEF_ReadSMS	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:231:6:NDEF_PrepareSMSMessage	10
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_SMS.c:210:10:NDEF_WriteSMS	1

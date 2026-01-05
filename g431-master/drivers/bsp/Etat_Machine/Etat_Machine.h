@@ -1,0 +1,39 @@
+/*
+ * Etat_Machine.h
+ *
+ *  Created on: May 14, 2025
+ *      Author: arthurloeul
+ */
+
+#ifndef BSP_ETAT_MACHINE_ETAT_MACHINE_H_
+#define BSP_ETAT_MACHINE_ETAT_MACHINE_H_
+
+typedef enum {
+	IDLE,
+	CODE_ENTRY,
+	RFID,
+	EMPREINTE,
+	GATE_OPEN,
+	GATE_CLOSE,
+
+	ADMIN_ENTRY,
+	ADMIN_MODE,
+	ADMIN_RFID,
+	RFID_ADD,
+	RFID_DELETE,
+	LIVREUR_CODE,
+	ADMIN_CODE,
+	ADMIN_ADD,
+	LIVREUR_ADD,
+	ADMIN_DELETE,
+	LIVREUR_DELETE,
+	ADMIN_FP,
+	FP_ADD,
+	FP_OPEN,
+	FP_DELETE
+} State;
+
+void stateMachine(void);
+
+
+#endif /* BSP_ETAT_MACHINE_ETAT_MACHINE_H_ */

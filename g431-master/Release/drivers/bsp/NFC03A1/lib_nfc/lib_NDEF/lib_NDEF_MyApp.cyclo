@@ -1,0 +1,2 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_MyApp.c:136:10:NDEF_ReadMyApp	7
+../drivers/bsp/NFC03A1/lib_nfc/lib_NDEF/lib_NDEF_MyApp.c:164:10:NDEF_WriteMyApp	5

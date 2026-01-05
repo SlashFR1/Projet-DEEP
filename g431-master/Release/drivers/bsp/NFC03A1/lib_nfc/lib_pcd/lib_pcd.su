@@ -1,0 +1,17 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:123:8:PCD_SendEOF	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:164:8:PCD_Echo	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:272:8:PCD_Idle	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:331:8:PCD_WriteRegister	272	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:355:8:PCD_PORsequence	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:183:8:PCD_ProtocolSelect	40	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:138:6:PCD_FieldOff	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:151:6:PCD_FieldOn	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:417:8:PCD_IsCRCOk	0	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:477:8:PCD_IsReaderResultCodeOk	0	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:231:8:PCD_SendRecv	280	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:301:8:PCD_ReadRegister	24	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:399:8:PCD_CheckSendReceive	8	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:607:8:PCD_TagDetectCalibration	56	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:692:8:PCD_WaitforTagDetection	48	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:730:8:PCD_BaudRate	16	static
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_pcd.c:751:8:PCD_ChangeUARTBaudRate	16	static

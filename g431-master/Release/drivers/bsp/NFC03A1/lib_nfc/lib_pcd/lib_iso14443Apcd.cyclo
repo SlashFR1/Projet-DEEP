@@ -1,0 +1,14 @@
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:109:13:ISO14443A_InitStructure	1
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:172:15:ISO14443A_AC	17
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:462:15:ISO14443A_ACLevel3	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:341:15:ISO14443A_ACLevel1	5
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:400:15:ISO14443A_ACLevel2	5
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:688:8:TOPAZ_ID	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:717:8:ISO14443A_IsPresent	6
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:787:8:ISO14443A_ConfigFDTforAnticollision	3
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:661:8:ISO14443A_Init	2
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:812:8:ISO14443A_ConfigFDTforRATS	4
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:847:8:ISO14443A_ConfigFDT	5
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:741:8:ISO14443A_Anticollision	15
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:909:6:ISO14443A_MultiTagHunting	11
+../drivers/bsp/NFC03A1/lib_nfc/lib_pcd/lib_iso14443Apcd.c:961:6:ISO14443A_MultiTagPart2	1
